@@ -16,21 +16,27 @@
 -- Query 1: List all employees sorted by name alphabetically.
 -- Expected columns: name, salary, hire_date
 
-SELECT name,salary,hire_date 
+SELECT name, salary, hire_date 
   FROM employees
   ORDER BY name
 
+-- Nothing to comment.
+  
 -- Query 2: List all employees with their department name.
 -- (Hint: you need to JOIN two tables)
 -- Expected columns: employee_name, department_name
 
-SELECT e.name as employee_name, d.name as department_name
+-- Nothing to comment.
+
+  SELECT e.name as employee_name, d.name as department_name
   FROM employees e
   LEFT OUTER JOIN departments d ON e.department_id = d.id
-
+  
 -- Query 3: Count how many employees are in each department.
 -- Expected columns: department_name, employee_count
 
+-- I'll lazily use the previous query and count employees by department.
+  
 SELECT department_name, count(1) as employee_count
   FROM
   (SELECT e.name as employee_name, d.name as department_name
@@ -45,6 +51,8 @@ SELECT department_name, count(1) as employee_count
 -- Query 4: Find the top 3 departments by average salary.
 -- Expected columns: department_name, avg_salary
 
+-- Join employees and departments, calculate averages by departments, order descending and take top 3.
+  
 SELECT d.name as department_name, AVG(e.salary) as avg_salary
 FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.id
 GROUP BY department_name
@@ -54,7 +62,16 @@ LIMIT 3
 -- Query 5: Find departments where the total employee salary exceeds the department budget.
 -- Expected columns: department_name, total_salary, budget
 
-
+-- Much the same as previous one, only SUM instead of AVG and then select from result the ones where the budget is smaller than total salary.
+-- There is no such department as can easily be seen when running only the inner query.
+  
+SELECT *
+FROM (
+SELECT d.name as department_name, SUM(e.salary) as total_salary, d.budget
+FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.id
+GROUP BY department_name
+)
+WHERE budget<total_salary
 
 -- Query 6: Count the number of active projects per department,
 --          including departments with zero active projects.
