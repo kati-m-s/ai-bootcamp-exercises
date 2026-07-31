@@ -96,7 +96,19 @@ ON p.d_id = d.id
 --          with at least one completed project.
 -- Expected columns: employee_name, department_name, hire_date
 
+-- Modified slightly the previous query by adding department id, then joined that to employees, selecting out employees with start date in last 1 year and active project count more than 0.
 
+SELECT e.name as employee_name, d.department_name, e.hire_date
+FROM employees e LEFT JOIN 
+(SELECT d.id as department_id, d.name as department_name, COALESCE(pr_count, 0) as active_project_count
+FROM departments d LEFT JOIN 
+(SELECT department_id as d_id, COUNT(1) as pr_count
+FROM projects
+WHERE start_date<=DATE('now') AND (end_date>DATE('now') OR end_date IS NULL)
+GROUP BY department_id) p
+ON p.d_id = d.id) d
+ON e.department_id = d.department_id
+WHERE hire_date > date('now','-1 year') AND active_project_count>0
 
 -- Query 8: Rank departments by their "project success rate"
 --          (completed projects / total projects). Exclude departments with no projects.
