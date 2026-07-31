@@ -1,7 +1,7 @@
 # Solution Notes
 
 ## Environment
-- Python version:
+- Python version: I used colab because that's what we have used in university so it was the path of least resistance. Also I had only library computer to use.
 - Key libraries used:
 - LLM API used:
 - LLM model used:
@@ -13,7 +13,7 @@ _Mark which level you reached per exercise:_
 | Exercise | BASE | STANDARD | ADVANCED |
 |----------|------|----------|----------|
 | 1 - Python & Data | [ ] | [ ] | [ ] |
-| 2 - SQL | [ ] | [ ] | [ ] |
+| 2 - SQL | [ X] | [X ] | [ X] |
 | 3 - LLM | [ ] | [ ] | [ ] |
 | 4 - Integration | [ ] | [ ] | [ ] |
 
@@ -35,11 +35,20 @@ _Mark which level you reached per exercise:_
 
 **Your approach:** _Describe what you did and why._
 
+I used regular SQL, with some help from googling, especially for SQLite specialties and date functions.
+
 **If you completed BASE:** Which query was hardest to write and what did you look up or try before getting it right?
+
+I looked up the kinds of JOIN because back when I learnt SQL, we did it with WHERE clause but I remembered that it is not considered best practice.
 
 **If you completed STANDARD:** In Query 6 (active projects per department), how did you handle departments with zero projects? What happens if you use INNER JOIN instead?
 
+I used LEFT JOIN. INNER JOIN would lose these departments that have no department id among projects.
+
 **If you completed ADVANCED:** Query 9 (highest salary per department with ties) — what approach did you take, and what's an alternative way to solve it?
+
+I used PARTITION BY department, RANK them within that department by salary, then show people with rank 1. 
+An alternative way would be to use MAX function for each department and then show people in each department whose salary is equal to that max salary.
 
 ---
 
@@ -88,7 +97,7 @@ _Rate your current skill level honestly (1 = no experience, 5 = very confident):
 | Python programming | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Working with data (files, CSV, JSON) | [ ] | [ ] | [ ] | [ ] | [ ] |
 | pandas / data analysis | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SQL | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SQL | [ ] | [ ] | [ ] | [X ] | [ ] |
 | Git and version control | [ ] | [ ] | [ ] | [ ] | [ ] |
 | REST APIs (calling/building) | [ ] | [ ] | [ ] | [ ] | [ ] |
 | LLMs and prompt engineering | [ ] | [ ] | [ ] | [ ] | [ ] |
