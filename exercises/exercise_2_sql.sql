@@ -45,7 +45,11 @@ SELECT department_name, count(1) as employee_count
 -- Query 4: Find the top 3 departments by average salary.
 -- Expected columns: department_name, avg_salary
 
-
+SELECT d.name as department_name, AVG(e.salary) as avg_salary
+FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.id
+GROUP BY department_name
+ORDER BY avg_salary DESC
+LIMIT 3
 
 -- Query 5: Find departments where the total employee salary exceeds the department budget.
 -- Expected columns: department_name, total_salary, budget
