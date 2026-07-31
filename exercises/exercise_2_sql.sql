@@ -114,10 +114,27 @@ WHERE hire_date > date('now','-1 year') AND active_project_count>0
 --          (completed projects / total projects). Exclude departments with no projects.
 -- Expected columns: department_name, total_projects, completed_projects, success_rate
 
+-- Count all projects and completed projects, divide them to find rate of success. Order by that rate.
 
+SELECT d.name as department_name, total_projects, completed_projects, CAST(completed_projects AS REAL) / total_projects as success_rate
+FROM departments d INNER JOIN
+(SELECT department_id, COUNT(1) as total_projects, COUNT(1) FILTER (WHERE status = 'completed') as completed_projects
+FROM projects
+GROUP BY department_id) p
+ON d.id = p.department_id
+ORDER BY success_rate DESC
 
 -- Query 9: For each department, find the employee with the highest salary.
 --          If multiple employees tie, show all of them.
 -- Expected columns: department_name, employee_name, salary
 
-
+-- Partition by department, rank them within that department by salary, then show people with rank 1. If there were any ties it would show all of people with rank 1.
+  
+SELECT department_name, employee_name, salary
+FROM (
+SELECT e.name as employee_name, d.name as department_name, e.salary, RANK() OVER (
+PARTITION BY
+d.name
+ORDER BY salary DESC) salaryrank
+FROM employees e LEFT OUTER JOIN departments d ON e.department_id = d.id)
+WHERE salaryrank = 1
