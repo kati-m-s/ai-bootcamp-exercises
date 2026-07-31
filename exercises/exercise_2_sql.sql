@@ -15,6 +15,7 @@
 
 -- Query 1: List all employees sorted by name alphabetically.
 -- Expected columns: name, salary, hire_date
+
 SELECT name,salary,hire_date 
   FROM employees
   ORDER BY name
@@ -22,15 +23,19 @@ SELECT name,salary,hire_date
 -- Query 2: List all employees with their department name.
 -- (Hint: you need to JOIN two tables)
 -- Expected columns: employee_name, department_name
-SELECT e.name as employee_name, d.name as department_name
-FROM employees e
-LEFT OUTER JOIN departments d ON e.department_id = d.id
 
+SELECT e.name as employee_name, d.name as department_name
+  FROM employees e
+  LEFT OUTER JOIN departments d ON e.department_id = d.id
 
 -- Query 3: Count how many employees are in each department.
 -- Expected columns: department_name, employee_count
 
-
+SELECT department_name, count(1) as employee_count
+  FROM
+  (SELECT e.name as employee_name, d.name as department_name
+  FROM employees e
+  LEFT OUTER JOIN departments d ON e.department_id = d.id)
 
 -- ============================================================
 -- STANDARD LEVEL — JOINs, aggregations, filtering
