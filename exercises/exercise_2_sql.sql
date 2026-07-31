@@ -77,13 +77,13 @@ WHERE budget<total_salary
 --          including departments with zero active projects.
 -- Expected columns: department_name, active_project_count
 
--- In inner SELECT, I create a table which only has departments and active project counts, then in out I join that to departments names, replacing NULL with 0.
+-- In inner SELECT, I create a table which only has departments and active project counts, then I join that to departments' names, replacing NULL with 0.
 
 SELECT d.name as department_name, COALESCE(pr_count, 0) as active_project_count
 FROM departments d LEFT JOIN 
 (SELECT department_id as d_id, COUNT(1) as pr_count
 FROM projects
-WHERE start_date<=DATE('now') AND (end_date>DATE('now') OR end_date IS NULL)
+WHERE status = 'active'
 GROUP BY department_id) p
 ON p.d_id = d.id
 
@@ -104,7 +104,7 @@ FROM employees e LEFT JOIN
 FROM departments d LEFT JOIN 
 (SELECT department_id as d_id, COUNT(1) as pr_count
 FROM projects
-WHERE start_date<=DATE('now') AND (end_date>DATE('now') OR end_date IS NULL)
+WHERE status = 'active'
 GROUP BY department_id) p
 ON p.d_id = d.id) d
 ON e.department_id = d.department_id
