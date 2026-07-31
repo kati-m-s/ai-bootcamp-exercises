@@ -36,6 +36,7 @@ SELECT department_name, count(1) as employee_count
   (SELECT e.name as employee_name, d.name as department_name
   FROM employees e
   LEFT OUTER JOIN departments d ON e.department_id = d.id)
+  GROUP BY department_name
 
 -- ============================================================
 -- STANDARD LEVEL — JOINs, aggregations, filtering
