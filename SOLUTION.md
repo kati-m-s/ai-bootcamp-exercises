@@ -1,10 +1,10 @@
 # Solution Notes
 
 ## Environment
-- Python version: I used colab because that's what we have used in university so it was the path of least resistance. Also I had only library computer to use.
+- Python version: I used Colab because that's what we have used in university so it was the path of least resistance. Also I didn't have my computer with me, using either library computer or one borrowed from a relative.
 - Key libraries used:
-- LLM API used:
-- LLM model used:
+- LLM API used: -
+- LLM model used: -
 
 ## Highest Level Completed
 
@@ -12,7 +12,7 @@ _Mark which level you reached per exercise:_
 
 | Exercise | BASE | STANDARD | ADVANCED |
 |----------|------|----------|----------|
-| 1 - Python & Data | [ ] | [ ] | [ ] |
+| 1 - Python & Data | [ X] | [X ] | [ ] |
 | 2 - SQL | [ X] | [X ] | [ X] |
 | 3 - LLM | [ ] | [ ] | [ ] |
 | 4 - Integration | [ ] | [ ] | [ ] |
@@ -55,6 +55,7 @@ An alternative way would be to use MAX function for each department and then sho
 ## Exercise 3: LLM & Prompt Engineering
 
 **Your approach:** _Describe what you did and why._
+Did nothing. No existing LLM accounts, not enough computer time and resources.
 
 **If you completed BASE:** What did you notice about how the LLM responds differently when you change the wording of your prompt? Give a specific example.
 
@@ -67,6 +68,7 @@ An alternative way would be to use MAX function for each department and then sho
 ## Exercise 4: Integration
 
 **Your approach:** _Describe what you did and why._
+Did nothing. No existing LLM accounts, not enough computer time and resources.
 
 **If you completed BASE:** How did you handle stop-word removal in keyword extraction? What list did you use and would you change it?
 
@@ -82,9 +84,18 @@ _These questions are about your experience doing the task, not the code itself._
 
 1. **What did you get stuck on longest?** Describe the specific moment — what you were trying to do, what went wrong, and how you got past it.
 
+To use Python in github when I had only a tablet for that. Then I gave up and went with Colab.
+
 2. **What did you Google/search for during this task?** List 2–3 specific things you looked up.
 
-3. **If you used AI tools (Copilot, ChatGPT, etc.), which parts did you use them for?** Be honest — this is not penalized. We want to understand your workflow.
+"SQLite TOP 3"
+"date format in SQLite"
+"python pandas help"
+
+4. **If you used AI tools (Copilot, ChatGPT, etc.), which parts did you use them for?** Be honest — this is not penalized. We want to understand your workflow.
+
+Gemini insisted in helping me in Colab with Python exercises, sometimes I took what it suggested because I would have probably ended up in the same with regular documentation (I struggle with syntax because I have used several different of programming languages over years, each with a slightly different syntax), but I always paused to think if I believe its suggestions. Sometimes I didn't, and used regular documentation or suggestions from stackexchange etc.
+Not with SQL though because that I wrote in a regular Notepad and uploaded to Colab for the script to use.
 
 ---
 
@@ -94,28 +105,35 @@ _Rate your current skill level honestly (1 = no experience, 5 = very confident):
 
 | Skill | 1 | 2 | 3 | 4 | 5 |
 |-------|---|---|---|---|---|
-| Python programming | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Working with data (files, CSV, JSON) | [ ] | [ ] | [ ] | [ ] | [ ] |
-| pandas / data analysis | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Python programming | [] | [ x] | [ ] | [ ] | [ ] |
+| Working with data (files, CSV, JSON) | [ ] | [ ] | [x] | [ ] | [ ] |
+| pandas / data analysis | [ ] | [x] | [ ] | [ ] | [ ] |
 | SQL | [ ] | [ ] | [ ] | [X ] | [ ] |
-| Git and version control | [ ] | [ ] | [ ] | [ ] | [ ] |
-| REST APIs (calling/building) | [ ] | [ ] | [ ] | [ ] | [ ] |
-| LLMs and prompt engineering | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Error handling and debugging | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Reading documentation to learn new tools | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Explaining technical concepts to others | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Git and version control | [ ] | [ ] | [ x] | [ ] | [ ] |
+| REST APIs (calling/building) | [x ] | [] | [ ] | [ ] | [ ] |
+| LLMs and prompt engineering | [ ] | [x ] | [ ] | [ ] | [ ] |
+| Error handling and debugging | [ ] | [x ] | [ ] | [ ] | [ ] |
+| Reading documentation to learn new tools | [ ] | [ ] | [ ] | [x ] | [ ] |
+| Explaining technical concepts to others | [ ] | [ ] | [ ] | [x] | [ ] |
+
+Can't say I haven't done at all, but...
 
 **What is your strongest technical skill overall?**
-_
+
+Logical thinking (SQL is all that).
+And I guess what with having taught how to solve logical puzzles to students for over a decade, I should be pretty good at explaining concepts to others.
 
 **What is the area you most want to improve during the bootcamp?**
-_
+
+I didn't even know there was going to be a bootcamp??
 
 **Have you built any personal or work projects before? If yes, briefly describe one:**
-_
 
----
+
 
 ## Self-Assessment
 
 _What are you least confident about in your submission? What would you do differently next time?_
+
+LLMs.
+And I would take my computer (with exercises and examples from studies) with me to vacation!
