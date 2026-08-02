@@ -22,7 +22,7 @@ OUTPUT_PATH = Path(__file__).parent.parent / "output"
 # ============================================================
 # BASE LEVEL — Pure Python (no external libraries needed)
 # ============================================================
-
+import csv
 def load_csv_manual(filepath: str) -> list[dict]:
     """
     Load a CSV file using only built-in Python (no pandas).
@@ -31,8 +31,13 @@ def load_csv_manual(filepath: str) -> list[dict]:
 
     Example: [{"ticket_id": "1", "title": "Login issue", ...}, ...]
     """
-    # TODO: Implement using open() and csv module or manual parsing
-    pass
+    lst = list()
+    with open(filepath) as f:
+      ff = csv.DictReader(f)
+      for r in ff:
+         lst.append(r)
+    return lst
+
 
 
 def count_by_status(rows: list[dict]) -> dict:
@@ -40,8 +45,15 @@ def count_by_status(rows: list[dict]) -> dict:
     Count how many tickets are in each status (open, resolved, etc.).
     Return a dict like: {"open": 12, "resolved": 23}
     """
-    # TODO: Implement this function
-    pass
+    d = dict()
+    for r in rows:
+      if r["status"] in d:
+        # not yet in the dictionary - let's add a new row with the name of this status (and count 1)
+        d[r["status"]] = 1
+      else:
+        # already in dictionary - let's add 1 to the count
+        d[r["status"]] += 1
+    return d
 
 
 def filter_by_priority(rows: list[dict], priority: str) -> list[dict]:
@@ -49,8 +61,12 @@ def filter_by_priority(rows: list[dict], priority: str) -> list[dict]:
     Return only rows matching the given priority (case-insensitive).
     Example: filter_by_priority(rows, "high") returns all high-priority tickets.
     """
-    # TODO: Implement this function
-    pass
+    lst = list()
+    for r in rows:
+      # changing both the priority in the row and in the priority given into lowercase for case-insensitivity
+      if r["priority"].lower == priority.lower:
+        lst.append(r)
+    return lst
 
 
 def find_missing_descriptions(rows: list[dict]) -> list[str]:
@@ -68,8 +84,8 @@ def find_missing_descriptions(rows: list[dict]) -> list[str]:
 def load_data(filepath: str):
     """Load the CSV file and return a pandas DataFrame."""
     import pandas as pd
-    # TODO: Implement this function
-    pass
+    df = pd.DataFrame(pd.read_csv(filepath))
+    return df
 
 
 def clean_data(df):
@@ -81,8 +97,14 @@ def clean_data(df):
 
     Return the cleaned DataFrame.
     """
-    # TODO: Implement this function
-    pass
+    # 1. Replacing all '' with NaN and then dropping all NaN.
+    df = df.replace('', np.nan)
+    df = df.dropna(subset=["description"])
+    # 2. Changing all priorities to lowercase.
+    df["priority"] = df["priority"].str.lower()
+    # 3. Change all created_at to datetime format.
+    df["created_at"] = pd.to_datetime(df["created_at"])
+    return df
 
 
 def tickets_per_month(df) -> dict:
