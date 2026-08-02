@@ -23,13 +23,17 @@ _Mark which level you reached per exercise:_
 
 **Your approach:** _Describe what you did and why._
 
+I wrote the functions as asked, to my best ability.
+
 **If you completed BASE:** What was your strategy for handling the messy priority values (mixed case like "HIGH", "high", "High")? Did you use any specific Python technique?
+
+No specific technique, just made everything lowercase.
 
 **If you completed STANDARD:** What would you change if this dataset had 1 million rows instead of 35?
 
 **If you completed ADVANCED:** How did you decide what counts as an "anomaly"? Where do you draw the line between messy data and actually wrong data?
 
-Time spent: about 3 hours
+Time spent: about 2 hours
 ---
 
 ## Exercise 2: SQL
