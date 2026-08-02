@@ -29,6 +29,7 @@ _Mark which level you reached per exercise:_
 
 **If you completed ADVANCED:** How did you decide what counts as an "anomaly"? Where do you draw the line between messy data and actually wrong data?
 
+Time spent: about 3 hours
 ---
 
 ## Exercise 2: SQL
@@ -50,6 +51,7 @@ I used LEFT JOIN. INNER JOIN would lose these departments that have no departmen
 I used PARTITION BY department, RANK them within that department by salary, then show people with rank 1. 
 An alternative way would be to use MAX function for each department and then show people in each department whose salary is equal to that max salary.
 
+Time spent: about 3 hours
 ---
 
 ## Exercise 3: LLM & Prompt Engineering
