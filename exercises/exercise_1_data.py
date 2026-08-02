@@ -33,7 +33,9 @@ def load_csv_manual(filepath: str) -> list[dict]:
     """
     lst = list()
     with open(filepath) as f:
+      # read from csv
       ff = csv.DictReader(f)
+      # add each row to list
       for r in ff:
          lst.append(r)
     return lst
@@ -61,10 +63,12 @@ def filter_by_priority(rows: list[dict], priority: str) -> list[dict]:
     Return only rows matching the given priority (case-insensitive).
     Example: filter_by_priority(rows, "high") returns all high-priority tickets.
     """
+    # changing the priority given into lowercase for case-insensitivity
+    prior = priority.lower()
     lst = list()
     for r in rows:
-      # changing both the priority in the row and in the priority given into lowercase for case-insensitivity
-      if r["priority"].lower == priority.lower:
+      # changing the priority in the row into lowercase for case-insensitivity comparison
+      if r["priority"].lower() == prior:
         lst.append(r)
     return lst
 
@@ -73,9 +77,12 @@ def find_missing_descriptions(rows: list[dict]) -> list[str]:
     """
     Return ticket_ids where 'description' is empty or missing.
     """
-    # TODO: Implement this function
-    pass
-
+    lst = list()
+    for r in rows:
+      if r["description"] == "":
+        # if description is an empty string, then add it to the list
+        lst.append(r["ticket_id"])
+    return lst
 
 # ============================================================
 # STANDARD LEVEL — Pandas-based analysis
@@ -97,6 +104,7 @@ def clean_data(df):
 
     Return the cleaned DataFrame.
     """
+    import numpy as np
     # 1. Replacing all '' with NaN and then dropping all NaN.
     df = df.replace('', np.nan)
     df = df.dropna(subset=["description"])
